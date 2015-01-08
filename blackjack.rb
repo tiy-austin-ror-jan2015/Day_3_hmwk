@@ -1,6 +1,7 @@
 puts "Welcome to Blackjack!"
 puts "You have $100, but it's a $10 fee per game."
 puts "Let's play!"
+#You should move lines 1-3 to the bottom of the file. - JH
 class BlackJack
   def initialize
     @player = Player.new
@@ -10,6 +11,7 @@ class BlackJack
     def initialiaze
       @user_answer = gets.chomp
     end
+    #^^ Initialize methods only go in classes, not in methods and you already have an initialize for this class (on line 6) Simply delete the method, you can keep the gets.chomp line. -JH
     while @player.money > 10 do
       @player.money -= 10
       puts "Now you have $#{@player.money}"
@@ -41,7 +43,7 @@ class Player
     @money = 100
     @total = 0
   end
-
+#<--- ?? Where is the end of your Player class? I think it may be below your Deck. Make sure to close your classes. - JH
 
 
 class Deck
@@ -68,7 +70,7 @@ class Deck
     @cards.shift
   end
 end
-end
+end # <-- Found the end of your Player class - JH
 
 BlackJack.new.play
 
