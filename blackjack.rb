@@ -5,9 +5,14 @@ class Blackjack
   end
 
   def play
-    while @player.cards.money > 10 do
-      card_one = @player.cards.draw
-      card_two = @player.cards.draw
+    while @player.money > 10 do
+      #I changed @player.cards.money to what's above. is it correct?
+      @player.money -= 10
+      #where is the correct place to put the line above? Where am I actually calling play
+      card_one = @player.cards.deal
+      card_two = @player.cards.deal
+      card_three = @player.cards.hit
+      #is this an ok way to instantiate card_three?
       puts "Your total is [#{card_one} + #{card_two}]"
       puts "Would you like another card? (y or n)?"
         user_answer = gets.chomp
@@ -19,6 +24,10 @@ class Blackjack
           puts "You chose to stay! Thanks for playing."
         end
     end
+  end
+#I know I still need to set it up for the game to continue...
+  def sum_player_hand(player_hand)
+    player_hand.reduce(:+)
   end
 end
 
