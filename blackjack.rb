@@ -1,25 +1,28 @@
 puts "Welcome to Blackjack!"
-class Blackjack
+puts "You have $100, but it's a $10 fee per game."
+puts "Let's play!"
+class BlackJack
   def initialize
     @player = Player.new
   end
 
   def play
+    def initialiaze
+      @user_answer = gets.chomp
+    end
     while @player.money > 10 do
-      #I changed @player.cards.money to what's above. is it correct?
       @player.money -= 10
-      #where is the correct place to put the line above? Where am I actually calling play
-      card_one = @player.cards.deal
-      card_two = @player.cards.deal
+      puts "Now you have $#{@player.money}"
+      card_one = @player.cards.hit
+      card_two = @player.cards.hit
       card_three = @player.cards.hit
-      #is this an ok way to instantiate card_three?
-      puts "Your total is [#{card_one} + #{card_two}]"
+      puts "Your total is #{card_one + card_two}"
       puts "Would you like another card? (y or n)?"
-        user_answer = gets.chomp
-        if user_answer.downcase == y
+      @user_answer = gets.chomp
+        if @user_answer == "y"
           puts "Okay, here's your new card. Good luck"
           @player.cards.hit
-          puts "Your new total is [#{card_one} + #{card_two} + {card_three}]"
+          puts "Your new total is #{card_one + card_two + card_three}"
         else
           puts "You chose to stay! Thanks for playing."
         end
@@ -64,9 +67,9 @@ class Deck
   def hit
     @cards.shift
   end
-
-
 end
 end
+
+BlackJack.new.play
 
 
